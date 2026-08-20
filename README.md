@@ -58,30 +58,20 @@ cp .env.example .env
 uv sync
 ```
 
-### 3. Menjalankan Layanan Infrastruktur & Migrasi Database
-```bash
-# Jalankan PostgreSQL & Redis
-docker compose -f infrastructure/docker/docker-compose.yml up -d postgres redis
+### 3. Menjalankan Seluruh Stack Layanan (Docker Compose)
+Seluruh ekosistem layanan (PostgreSQL, Redis, API Gateway, Vision Worker, dan Event Processor) dapat dijalankan secara terpadu melalui satu perintah Docker Compose:
 
-# Jalankan migrasi schema database ke versi terbaru
+```bash
+# 1. Jalankan seluruh container layanan
+docker compose -f infrastructure/docker/docker-compose.yml up -d
+
+# 2. Terapkan migrasi skema database terbaru
 uv run alembic upgrade head
 ```
 
-### 4. Menjalankan Aplikasi (Native UV Commands)
-Setiap aplikasi adalah member resmi workspace yang dapat dijalankan langsung melalui `uv run`:
+### 4. Pengujian & Validasi Monorepo (Pytest Suite)
+Seluruh kontrak data, model database, konfigurasi, dan integrasi diuji secara komprehensif melalui native workspace runner:
 
-```bash
-# Menjalankan API Gateway (FastAPI)
-uv run workvision-api
-
-# Menjalankan Vision Worker (RTSP & AI Inference)
-uv run workvision-worker
-
-# Menjalankan Event & State Processor
-uv run workvision-processor
-```
-
-### 5. Menjalankan Pengujian (Pytest Suite)
 ```bash
 # Menjalankan seluruh test suite
 uv run pytest -v

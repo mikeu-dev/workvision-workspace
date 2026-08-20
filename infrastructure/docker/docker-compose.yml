@@ -32,6 +32,51 @@ services:
       timeout: 5s
       retries: 5
 
+  api:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/Dockerfile
+    container_name: workvision_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - ../../.env
+    ports:
+      - "8000:8000"
+    command: ["uvicorn", "workvision_api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+  vision-worker:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/Dockerfile
+    container_name: workvision_vision_worker
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+    env_file:
+      - ../../.env
+    command: ["python", "-m", "workvision_worker.main"]
+
+  event-processor:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/Dockerfile
+    container_name: workvision_event_processor
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - ../../.env
+    command: ["python", "-m", "workvision_processor.main"]
+
 volumes:
   postgres_data:
   redis_data:
