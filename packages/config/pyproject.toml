@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workvision-config"
+version = "0.1.0"
+description = "Centralized configuration for WorkVision AI"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.2.0",
+    "python-dotenv>=1.0.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["workvision_config*"]
