@@ -5,7 +5,7 @@ Centralized Configuration & Settings for WorkVision AI.
 import json
 from functools import lru_cache
 from typing import List, Union
-from pydantic import field_validator
+from pydantic import AliasChoices, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -81,8 +81,16 @@ class Settings(BaseSettings):
     # --------------------------------------------------------------------------
     # 8. API & WebSocket Gateway
     # --------------------------------------------------------------------------
-    API_HOST: str = "0.0.0.0"
-    API_PORT: int = 8000
+    API_HOST: str = Field(
+        default="0.0.0.0",
+        validation_alias=AliasChoices("API_HOST", "HOST"),
+        description="Host interface to bind API server (supports HOST or API_HOST env)",
+    )
+    API_PORT: int = Field(
+        default=8000,
+        validation_alias=AliasChoices("API_PORT", "PORT"),
+        description="Port to bind API server (supports PORT or API_PORT env)",
+    )
     CORS_ORIGINS: Union[List[str], str] = [
         "http://localhost:5173",
         "http://localhost:3000",

@@ -1,3 +1,3 @@
-api: uvicorn workvision_api.main:app --host 0.0.0.0 --port 8000 --reload
+api: python -m workvision_api.main
 worker: python -m workvision_worker.main
 processor: python -m workvision_processor.main

@@ -30,3 +30,14 @@ def test_cors_origins_parsing():
     # JSON array string format
     s3 = Settings(CORS_ORIGINS='["http://example.com"]')
     assert s3.CORS_ORIGINS == ["http://example.com"]
+
+
+def test_host_and_port_aliases():
+    """Test HOST and PORT aliases for cloud PaaS deployments."""
+    s1 = Settings(_env_file=None, HOST="127.0.0.1", PORT=9000)
+    assert s1.API_HOST == "127.0.0.1"
+    assert s1.API_PORT == 9000
+
+    s2 = Settings(_env_file=None, API_HOST="0.0.0.0", API_PORT=8080)
+    assert s2.API_HOST == "0.0.0.0"
+    assert s2.API_PORT == 8080
