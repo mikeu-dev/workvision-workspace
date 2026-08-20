@@ -1,0 +1,57 @@
+[tool.uv.workspace]
+members = [
+    "apps/api",
+    "apps/vision-worker",
+    "apps/event-processor",
+    "packages/config",
+    "packages/db",
+    "packages/schemas",
+    "packages/shared",
+]
+
+[tool.uv.sources]
+workvision-config = { workspace = true }
+workvision-db = { workspace = true }
+workvision-schemas = { workspace = true }
+workvision-shared = { workspace = true }
+workvision-api = { workspace = true }
+workvision-worker = { workspace = true }
+workvision-processor = { workspace = true }
+
+[project]
+name = "workvision-workspace"
+version = "0.1.0"
+description = "AI Vision Workforce Monitoring Engine - Monorepo Workspace"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [
+    { name = "WorkVision Dev Team" }
+]
+dependencies = [
+    "workvision-config",
+    "workvision-db",
+    "workvision-schemas",
+    "workvision-shared",
+    "workvision-api",
+    "workvision-worker",
+    "workvision-processor",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+python_files = ["test_*.py", "*_test.py"]
+python_functions = ["test_*"]
