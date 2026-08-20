@@ -26,7 +26,9 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "Proprietary" }
 authors = [
-    { name = "WorkVision Dev Team" }
+    { 
+      name = "Riki Ruswandi a.k.a mikeu-dev"
+    }
 ]
 dependencies = [
     "workvision-config",
