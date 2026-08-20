@@ -4,7 +4,7 @@ AI Vision Workforce Monitoring Engine adalah platform computer vision dan analyt
 
 ---
 
-## 🏗️ Struktur Repositori (Monorepo UV Workspace)
+## Struktur Repositori (Monorepo UV Workspace)
 
 Workspace dikelola secara modular menggunakan fitur native **[uv workspaces](https://docs.astral.sh/uv/concepts/workspaces/)**:
 
@@ -34,7 +34,7 @@ workvision-ai/
 
 ---
 
-## 📚 Dokumentasi Utama
+## Dokumentasi Utama
 
 - **Product Requirements Document (PRD):** [`docs/PRD.md`](file:///c:/Users/dev%20perusahaan%20pst/workspaces/pst/workvision-ai/docs/PRD.md)
 - **System Architecture & Technical Design:** [`docs/SYSTEM_ARCHITECTURE.md`](file:///c:/Users/dev%20perusahaan%20pst/workspaces/pst/workvision-ai/docs/SYSTEM_ARCHITECTURE.md)
@@ -42,7 +42,7 @@ workvision-ai/
 
 ---
 
-## 🚀 Quick Start (Development dengan `uv`)
+## Quick Start (Development dengan `uv`)
 
 ### 1. Prasyarat
 - [uv](https://docs.astral.sh/uv/) (Package & Workspace Manager)
@@ -89,7 +89,7 @@ uv run pytest -v
 
 ---
 
-## 👨‍💻 Author & Maintainer
+## Author & Maintainer
 
 - **Nama:** Riki Ruswandi
 - **GitHub:** [@mikeu-dev](https://github.com/mikeu-dev)
@@ -97,7 +97,6 @@ uv run pytest -v
 
 ---
 
-## 📄 Lisensi
+## Lisensi
 
 Proyek ini dilisensikan di bawah ketentuan **[MIT License](file:///c:/Users/dev%20perusahaan%20pst/workspaces/pst/workvision-ai/LICENSE)** — lihat berkas [LICENSE](file:///c:/Users/dev%20perusahaan%20pst/workspaces/pst/workvision-ai/LICENSE) untuk detail selengkapnya.
-
