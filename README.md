@@ -58,8 +58,10 @@ cp .env.example .env
 uv sync
 ```
 
-### 3. Menjalankan Seluruh Stack Layanan (Docker Compose)
-Seluruh ekosistem layanan (PostgreSQL, Redis, API Gateway, Vision Worker, dan Event Processor) dapat dijalankan secara terpadu melalui satu perintah Docker Compose:
+### 3. Menjalankan Aplikasi
+
+#### Opsi A: Menjalankan Seluruh Stack (Docker Compose)
+Seluruh ekosistem layanan (PostgreSQL, Redis, API Gateway, Vision Worker, dan Event Processor) dapat dijalankan secara terpadu melalui Docker Compose:
 
 ```bash
 # 1. Jalankan seluruh container layanan
@@ -67,6 +69,17 @@ docker compose -f infrastructure/docker/docker-compose.yml up -d
 
 # 2. Terapkan migrasi skema database terbaru
 uv run alembic upgrade head
+```
+
+#### Opsi B: Development Bare-Metal Lokal (Procfile + Honcho)
+Untuk menjalankan seluruh service aplikasi Python secara simultan di satu terminal (setara dengan `pnpm dev` pada monorepo frontend):
+
+```bash
+# 1. Pastikan PostgreSQL & Redis lokal aktif, lalu terapkan migrasi
+uv run alembic upgrade head
+
+# 2. Jalankan seluruh service workspace secara paralel
+uv run honcho start
 ```
 
 ### 4. Pengujian & Validasi Monorepo (Pytest Suite)
