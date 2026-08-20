@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workvision-api"
+version = "0.1.0"
+description = "FastAPI Backend & WebSocket Gateway for WorkVision AI"
+requires-python = ">=3.10"
+dependencies = [
+    "workvision-config",
+    "workvision-schemas",
+    "workvision-db",
+    "fastapi>=0.111.0",
+    "uvicorn[standard]>=0.30.0",
+]
+
+[project.scripts]
+workvision-api = "workvision_api.main:run"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["workvision_api*"]
