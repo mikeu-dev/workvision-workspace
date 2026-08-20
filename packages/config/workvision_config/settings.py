@@ -81,21 +81,29 @@ class Settings(BaseSettings):
     # --------------------------------------------------------------------------
     # 8. API & WebSocket Gateway
     # --------------------------------------------------------------------------
-    API_HOST: str = Field(
+    HOST: str = Field(
         default="0.0.0.0",
-        validation_alias=AliasChoices("API_HOST", "HOST"),
-        description="Host interface to bind API server (supports HOST or API_HOST env)",
+        validation_alias=AliasChoices("HOST", "API_HOST"),
+        description="Host interface to bind API server",
     )
-    API_PORT: int = Field(
+    PORT: int = Field(
         default=8000,
-        validation_alias=AliasChoices("API_PORT", "PORT"),
-        description="Port to bind API server (supports PORT or API_PORT env)",
+        validation_alias=AliasChoices("PORT", "API_PORT"),
+        description="Port to bind API server",
     )
     CORS_ORIGINS: Union[List[str], str] = [
         "http://localhost:5173",
         "http://localhost:3000",
         "http://127.0.0.1:5173",
     ]
+
+    @property
+    def API_HOST(self) -> str:
+        return self.HOST
+
+    @property
+    def API_PORT(self) -> int:
+        return self.PORT
 
     @field_validator("CORS_ORIGINS", mode="before")
     @classmethod
