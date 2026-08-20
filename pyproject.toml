@@ -24,11 +24,9 @@ version = "0.1.0"
 description = "AI Vision Workforce Monitoring Engine - Monorepo Workspace"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "Proprietary" }
+license = { text = "MIT" }
 authors = [
-    { 
-      name = "Riki Ruswandi a.k.a mikeu-dev"
-    }
+    { name = "Riki Ruswandi (mikeu-dev)", email = "rikiruswandi28@gmail.com" }
 ]
 dependencies = [
     "workvision-config",

@@ -86,3 +86,18 @@ uv run workvision-processor
 # Menjalankan seluruh test suite
 uv run pytest -v
 ```
+
+---
+
+## 👨‍💻 Author & Maintainer
+
+- **Nama:** Riki Ruswandi
+- **GitHub:** [@mikeu-dev](https://github.com/mikeu-dev)
+- **Email:** [rikiruswandi28@gmail.com](mailto:rikiruswandi28@gmail.com)
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah ketentuan **[MIT License](file:///c:/Users/dev%20perusahaan%20pst/workspaces/pst/workvision-ai/LICENSE)** — lihat berkas [LICENSE](file:///c:/Users/dev%20perusahaan%20pst/workspaces/pst/workvision-ai/LICENSE) untuk detail selengkapnya.
+
