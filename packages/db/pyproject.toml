@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workvision-db"
+version = "0.1.0"
+description = "SQLAlchemy 2.0 Models & Alembic Migrations for WorkVision AI"
+requires-python = ">=3.10"
+dependencies = [
+    "workvision-config",
+    "sqlalchemy>=2.0.30",
+    "asyncpg>=0.29.0",
+    "alembic>=1.13.0",
+    "psycopg2-binary>=2.9.9",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["workvision_db*"]
